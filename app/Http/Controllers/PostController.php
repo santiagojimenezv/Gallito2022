@@ -21,7 +21,7 @@ class PostController extends Controller
 
         $posts = $user->posts()
                     ->orderBy('created_at', 'desc')
-                    ->get();
+                    ->simplePaginate(2);
 
         return view('posts.index', compact('posts', 'user'));
     }
