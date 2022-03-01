@@ -15,10 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->text('contents');
+            $table->text('content');
             $table->foreignId('user_id')->references('id')->on('users');
             //nullable --> acepta nulls
-            $table->integer('likes')->nullable(); 
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');

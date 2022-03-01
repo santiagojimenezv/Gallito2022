@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // Dice que seeders se van a correr y en que orden
         $this->call([UsersSeeder::class]);
+        $this->call([PostsSeeder::class]);
     }
 }
