@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index(User $user)
     {
-        $posts = Post::where('user_id', $user->id)
+       // $posts = Post::where('user_id', $user->id)
+         //           ->orderBy('created_at', 'desc')
+           //         ->get();
+
+        $posts = $user->posts()
                     ->orderBy('created_at', 'desc')
                     ->get();
 
