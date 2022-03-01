@@ -17,6 +17,8 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->text('contents');
             $table->foreignId('user_id')->references('id')->on('users');
+            //nullable --> acepta nulls
+            $table->integer('likes')->nullable(); 
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');
