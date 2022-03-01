@@ -17,9 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->text('content');
             $table->foreignId('user_id')->references('id')->on('users');
-            //nullable --> acepta nulls
             $table->timestamps();
 
+            //nullable --> acepta nulls
             //$table->foreign('user_id')->references('id')->on('users');
         });
     }
