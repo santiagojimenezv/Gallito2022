@@ -5,16 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                <div class="card-header">{{ __('Posts') }}</div>
+                @forelse($posts as $post)
+                    @include('posts.subview-post')
+                @empty
+                    <div class="alert alert-info" role="alert">
+                        El usuario no ha publicado mensajes
+                    </div>
+                @endforelse
+                <div class="mt-3">
+                    {{$posts->links()}}
                 </div>
             </div>
         </div>

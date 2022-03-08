@@ -23,7 +23,7 @@ class PostController extends Controller
 
         $posts = $user->posts()
                     ->orderBy('created_at', 'desc')
-                    ->simplePaginate(2);
+                    ->simplePaginate(10);
 
         return view('posts.index', compact('posts', 'user'));
     }
@@ -75,7 +75,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -85,9 +85,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostCreateRequest $request, Post $post)
     {
-        //
+        $post->fill($request->input());
+        $post->save();
+        return redirect(route('u.index', $post->user_id));
     }
 
     /**
