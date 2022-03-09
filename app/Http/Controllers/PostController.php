@@ -35,6 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
+
         return view('posts.create');
     }
 
@@ -75,7 +76,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        if($post->user_id==Auth::id()){
+            return view('posts.edit', compact('post'));
+        }
+        else{
+            return redirect(route('u.index', $post->user_id));
+        }
+
     }
 
     /**
@@ -100,8 +107,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-
-        return redirect(route('u.index', $post->user_id));
+        if($post->user_id==Auth::id()){
+            $post->delete();
+        }
+        else{
+            return redirect(route('u.index', $post->user_id));
+        }
     }
 }

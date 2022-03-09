@@ -26,7 +26,7 @@ Route::get('/u/{user}', [App\Http\Controllers\PostController::class, 'index'])->
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('posts', App\Http\Controllers\PostController::class)->except(['index'])->middleware('auth');
+    Route::resource('posts', App\Http\Controllers\PostController::class)->except(['index']);
 
 });
 
