@@ -28,6 +28,6 @@ class HomeController extends Controller
         ->orderBy('created_at', 'desc')
         ->simplePaginate(10);
 
-        return view('home', compact('posts', 'user'));
+        return view('posts.index', compact('posts', 'user'));
     }
 }

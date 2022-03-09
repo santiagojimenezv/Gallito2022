@@ -18,9 +18,18 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Auth::routes();
+
+
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('home_page');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/u/{user}', [App\Http\Controllers\PostController::class, 'index'])->name('u.index');
-Route::resource('posts', App\Http\Controllers\PostController::class)->except(['index']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('posts', App\Http\Controllers\PostController::class)->except(['index'])->middleware('auth');
+
+});
+
+
 
 

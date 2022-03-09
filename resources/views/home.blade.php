@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Posts') }}</div>
+
+                <div class="card-header">Publicaciones de {{ $user->name}}</div>
                 @forelse($posts as $post)
                     @include('posts.subview-post')
                 @empty
