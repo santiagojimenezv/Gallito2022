@@ -109,6 +109,7 @@ class PostController extends Controller
     {
         if($post->user_id==Auth::id()){
             $post->delete();
+            return redirect(route('u.index', $post->user_id));
         }
         else{
             return redirect(route('u.index', $post->user_id));

@@ -4,7 +4,7 @@
 
 <div class="container">
     <h4>¡Bienvenidos!</h4>
-    <h4>Estos son los usuarios registrados en la plataforma: </h4>
+    <h4>Estos son los usuarios registrados en Gallito: </h4>
     @forelse($users as $user)
         <ul>
             <li>
